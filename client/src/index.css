@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,400;0,500;0,600;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'DM Sans', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+
+  /* Dark Minimal Palette - Peaceful & Respectful */
+  --background: 240 5% 6%;      /* Very dark, slightly cool gray */
+  --foreground: 240 5% 90%;     /* Soft white */
+  
+  --card: 240 4% 10%;           /* Slightly lighter than background */
+  --card-foreground: 240 5% 90%;
+  
+  --popover: 240 4% 10%;
+  --popover-foreground: 240 5% 90%;
+  
+  --primary: 260 20% 70%;       /* Muted lavender/purple - respectful */
+  --primary-foreground: 240 5% 10%;
+  
+  --secondary: 240 4% 16%;      /* Dark gray for secondary elements */
+  --secondary-foreground: 240 5% 90%;
+  
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 60%;
+  
+  --accent: 260 20% 70%;
+  --accent-foreground: 240 5% 10%;
+  
+  --destructive: 0 50% 50%;
+  --destructive-foreground: 0 0% 100%;
+  
+  --border: 240 4% 16%;
+  --input: 240 4% 16%;
+  --ring: 260 20% 70%;
+  
+  --radius: 0.75rem;
+}
+
+/* Force dark mode styles since this is a dark-themed app */
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
+    font-family: var(--font-sans);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+    @apply tracking-tight;
+  }
+}
+
+/* Print Styles */
+@media print {
+  body {
+    @apply bg-white text-black;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+
+  .print-card {
+    @apply border border-gray-200 shadow-none break-inside-avoid mb-4 p-4 rounded-lg;
+    page-break-inside: avoid;
+  }
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full hover:bg-muted-foreground/50 transition-colors;
+}

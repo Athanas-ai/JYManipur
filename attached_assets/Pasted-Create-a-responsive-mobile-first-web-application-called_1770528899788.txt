@@ -1,0 +1,111 @@
+Create a responsive, mobile-first web application called "JY Prayer Intentions".
+
+GENERAL DESIGN:
+- Dark minimal theme
+- Clean, peaceful and respectful UI
+- Place a placeholder for JY logo at top-left corner
+- Mobile friendly first, then desktop
+- Soft typography and good spacing
+- Accessible and simple for shy users
+
+TECH STACK REQUIREMENT:
+- Ultra-light backend
+- Use Firebase (Firestore + Authentication) OR Supabase
+- Minimal server logic
+- No heavy frameworks unless necessary
+- Simple admin role system
+
+PAGES REQUIRED:
+
+1) HOME PAGE
+- Hero section explaining purpose:
+  "Submit your prayer intentions anonymously if you wish."
+- Weekly Prayer Challenge section:
+   - shows active challenge
+   - prayer type (Hail Mary / Our Father / Rosary)
+   - total target count
+   - live counter remaining
+   - button: "I prayed 1"
+- Scroll down to:
+   - Submit Prayer Intention Form
+       Fields:
+         - Prayer Intention (required)
+         - Name (optional)
+         - Prayer Type (optional dropdown)
+   - Submit button
+
+2) INTENTIONS PAGE
+- List all submitted intentions
+- Show:
+   - intention text
+   - optional name or "Anonymous"
+   - date submitted
+- Users can:
+   - mark "I prayed Hail Mary"
+   - mark "I prayed Our Father"
+   - mark "I prayed Rosary"
+- Maintain prayer counters per intention
+- Sort by newest first
+- Clean printable layout
+- Button: "Download / Print Intentions (PDF friendly)"
+
+3) ADMIN LOGIN PAGE
+- Email + password login
+- Only admin role access
+
+4) ADMIN DASHBOARD
+Admins can:
+- Add weekly prayer challenge
+   - title
+   - prayer type
+   - total count
+   - intention
+- Edit / delete challenges
+- View all submitted intentions
+- Mark intentions as "printed"
+- Export intentions for printing
+- Manage admin users
+
+BACKEND STRUCTURE:
+Collection: intentions
+- id
+- text
+- name (optional)
+- created_at
+- hail_mary_count
+- our_father_count
+- rosary_count
+- printed_status
+
+Collection: challenges
+- id
+- title
+- prayer_type
+- total_count
+- remaining_count
+- created_at
+- active_status
+
+Collection: users
+- email
+- role (admin / viewer)
+
+FUNCTIONAL REQUIREMENTS:
+- Real-time counter updates for challenges
+- Prevent rapid spam clicks (basic cooldown)
+- Anonymous submission allowed
+- Print view optimized for A4 format
+- Responsive for mobile devices
+- Smooth scrolling navigation
+- Clean minimal animations only
+
+SECURITY:
+- Admin-only write access for challenges
+- Public users can only add intentions and increment prayer counts
+- Validate empty submissions
+
+OUTPUT:
+- Full responsive UI structure
+- Firebase/Supabase schema
+- Clean, modular frontend components
+- Simple deploy-ready project
